@@ -10,7 +10,7 @@
                     <a href="/submit"><li>{{ blog.navigation.submit_label }}</li></a>
                 </span>
                 <span v-if="askEnabled">
-                    <a href="/ask"><li>{{ blog.navigation.ask_enabled }}</li></a>
+                    <a href="/ask"><li>{{ blog.navigation.ask_label }}</li></a>
                 </span>
             </ul>
         </nav>
