@@ -12,7 +12,7 @@ export default {
   components: { Header },
   data() {
     return {
-      blog: null
+      blog: {}
     }
   },
   created() {
