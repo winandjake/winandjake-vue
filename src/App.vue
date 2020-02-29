@@ -16,9 +16,6 @@ export default {
   components: { Header, Intro },
   computed: mapState({
     blog: state => state.blog
-  }),
-  created() {
-    this.blog = this.$root.$data;
-  }
+  })
 };
 </script>
