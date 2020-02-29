@@ -1,11 +1,16 @@
 <template>
   <div>
-    <h1>Muh index page...</h1>
+    <h1>{{ blog }}</h1>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  name: "Index"
+  name: "Index",
+  computed: mapState({
+    blog: state => state.blog
+  })
 };
 </script>

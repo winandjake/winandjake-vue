@@ -1,24 +1,26 @@
 <template>
   <nav>
     <ul>
-      <a href="/"><li>Home</li></a>
+      <router-link to="/"><li>Home</li></router-link>
+      <router-link to="/ourstory"><li>Our Story</li></router-link>
       <span v-if="hasPages">
         <a
           v-for="(page, idx) in blog.custom_pages"
           :key="'page-' + idx"
           :href="page.url"
-          >{{ page.label }}</a
         >
+          {{ page.label }}
+        </a>
       </span>
       <span v-if="submissionsEnabled">
-        <a href="/submit"
-          ><li>{{ blog.navigation.submit_label }}</li></a
-        >
+        <router-link to="/submit">
+          <li>{{ blog.navigation.submit_label }}</li>
+        </router-link>
       </span>
       <span v-if="askEnabled">
-        <a href="/ask"
-          ><li>{{ blog.navigation.ask_label }}</li></a
-        >
+        <router-link to="/ask">
+          <li>{{ blog.navigation.ask_label }}</li>
+        </router-link>
       </span>
     </ul>
   </nav>
@@ -27,7 +29,12 @@
 <script>
 export default {
   name: "NavBar",
-  props: ["blog"],
+  props: {
+    blog: {
+      type: Object,
+      required: true
+    }
+  },
   computed: {
     hasPages() {
       return (

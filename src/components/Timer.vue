@@ -1,7 +1,7 @@
 <template>
   <div id="timer">
     <h4>Our Next Meetup Is In</h4>
-    <p v-if="countdown && Object.keys(remaining).length">{{ remainingStr }}</p>
+    <p v-if="countdown && remaining > 0">{{ remainingStr }}</p>
     <span v-else
       ><b-spinner />
       <p>Loading...</p></span
@@ -21,44 +21,40 @@ export default {
   data() {
     return {
       countdown: undefined,
-      remaining: {}
+      remaining: -1
     };
   },
   computed: {
     remainingStr() {
       const r = this.remaining;
-      return `${r.days} days, ${r.hours} hours, ${r.minutes} minutes, and ${r.seconds} seconds from now`;
+      const seconds = Math.floor((r / 1000) % 60);
+      const minutes = Math.floor((r / 1000 / 60) % 60);
+      const hours = Math.floor((r / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(r / (1000 * 60 * 60 * 24));
+      return `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds from now`;
     }
   },
   methods: {
-    getTimeRemaining() {
-      var total = Date.parse(this.nextTrip) - Date.parse(new Date());
-      var seconds = Math.floor((total / 1000) % 60);
-      var minutes = Math.floor((total / 1000 / 60) % 60);
-      var hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-      var days = Math.floor(total / (1000 * 60 * 60 * 24));
-      return {
-        total,
-        days,
-        hours,
-        minutes,
-        seconds
-      };
-    },
-    startCountdown() {
-      this.countdown = setInterval(
-        () => (this.remaining = this.getTimeRemaining())
-      );
-    },
-    stopCountdown() {
-      clearInterval(this.countdown);
+    destroyCountdown() {
+      if (this.countdown) {
+        clearInterval(this.countdown);
+        this.countdown = undefined;
+      }
     }
   },
   mounted() {
-    this.startCountdown();
+    this.countdown = setInterval(() => {
+      const r = Date.parse(this.nextTrip) - Date.parse(new Date());
+      if (r <= 0) {
+        this.destroyCountdown();
+        return;
+      }
+
+      this.remaining = r;
+    });
   },
   beforeDestroy() {
-    this.stopCountdown();
+    this.destroyCountdown();
   }
 };
 </script>

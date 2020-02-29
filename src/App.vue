@@ -9,15 +9,14 @@
 <script>
 import Header from "./components/Header";
 import Intro from "./components/Intro";
+import { mapState } from "vuex";
 
 export default {
   name: "App",
   components: { Header, Intro },
-  data() {
-    return {
-      blog: {}
-    };
-  },
+  computed: mapState({
+    blog: state => state.blog
+  }),
   created() {
     this.blog = this.$root.$data;
   }

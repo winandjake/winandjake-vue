@@ -13,7 +13,12 @@ import NavBar from "./NavBar";
 
 export default {
   name: "Header",
-  props: ["blog"],
+  props: {
+    blog: {
+      type: Object,
+      required: true
+    }
+  },
   components: { NavBar }
 };
 </script>
