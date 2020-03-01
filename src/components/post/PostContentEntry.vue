@@ -27,10 +27,6 @@ export default {
       type: Array,
       required: true
     },
-    layout: {
-      type: Array,
-      required: true
-    },
     blog: {
       type: Object,
       required: false

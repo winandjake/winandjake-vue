@@ -11,17 +11,13 @@
           v-for="(entry, idx) in npf.trail"
           :key="'reblog-trail-' + idx"
         >
-          <PostContentEntry
-            :content="entry.content"
-            :layout="entry.layout"
-            :blog="entry.blog"
-          />
+          <PostContentEntry :content="entry.content" :blog="entry.blog" />
         </div>
       </div>
     </div>
     <hr v-if="isReblogged && hasOwnContent" />
     <div class="content" v-if="hasOwnContent">
-      <PostContentEntry :content="npf.content" :layout="npf.layout" />
+      <PostContentEntry :content="npf.content" />
     </div>
   </div>
 </template>

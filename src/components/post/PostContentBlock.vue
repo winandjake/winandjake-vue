@@ -1,7 +1,25 @@
 <template>
   <div>
     <div v-if="type === 'text'">
-      <p>{{ block.text }}</p>
+      <h1 v-if="subtype === 'heading1'">{{ block.text }}</h1>
+      <h2 v-else-if="subtype === 'heading2'">{{ block.text }}</h2>
+      <p v-else-if="subtype === 'quirky'" class="quirky">{{ block }}</p>
+      <p v-else-if="subtype === 'quote'" class="quote">{{ block.text }}</p>
+      <p v-else-if="subtype === 'indented'" class="indented">
+        {{ block.text }}
+      </p>
+      <p v-else-if="subtype === 'chat'" class="chat">{{ block.text }}</p>
+      <ol v-else-if="subtype === 'ordered-list-item'">
+        {{
+          block.text
+        }}
+      </ol>
+      <ul v-else-if="subtype === 'unordered-list-item'">
+        {{
+          block.text
+        }}
+      </ul>
+      <p v-else>{{ block.text }}</p>
     </div>
     <div v-else-if="type === 'image'">
       <img :src="block.media[0].url" />
@@ -32,6 +50,9 @@ export default {
   computed: {
     type() {
       return this.block.type;
+    },
+    subtype() {
+      return this.block.subtype;
     }
   }
 };
