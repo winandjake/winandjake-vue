@@ -5,12 +5,12 @@
         <strong>{{ blog.name }}</strong></a
       >:</span
     >
-    <div
-      class="blocks"
-      v-for="(block, idx) in content"
-      :key="'content-block-' + idx + '::' + uuid"
-    >
-      <PostContentBlock :block="block" />
+    <div class="blocks">
+      <PostContentBlock
+        v-for="(block, idx) in content"
+        :key="'content-block-' + idx + '::' + uuid"
+        :block="block"
+      />
     </div>
   </div>
 </template>
@@ -39,3 +39,16 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.blocks::v-deep {
+  .quote-container + div > p {
+    text-indent: 25px;
+    margin-top: -65px;
+
+    &:before {
+      content: "\2014\00A0";
+    }
+  }
+}
+</style>
