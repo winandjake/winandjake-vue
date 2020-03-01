@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <h1>{{ blog }}</h1>
-  </div>
+  <AllPosts />
 </template>
 
 <script>
+import AllPosts from "../components/AllPosts";
 import { mapState } from "vuex";
 
 export default {
   name: "Index",
+  components: { AllPosts },
   computed: mapState({
     blog: state => state.blog
   })

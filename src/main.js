@@ -9,6 +9,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
+import { VueMasonryPlugin } from "vue-masonry";
+Vue.use(VueMasonryPlugin);
+
 import router from "./assets/router";
 import store from "./assets/store";
 import App from "./App";
