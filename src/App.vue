@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Intro from "./components/Intro";
+import Header from "./components/structure/Header";
+import Intro from "./components/structure/Intro";
 import { mapState } from "vuex";
 
 export default {

@@ -12,6 +12,12 @@ Vue.use(BootstrapVueIcons);
 import { VueMasonryPlugin } from "vue-masonry";
 Vue.use(VueMasonryPlugin);
 
+import { library as fontawesome } from "@fortawesome/fontawesome-svg-core";
+import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+fontawesome.add(faRetweet);
+Vue.component("fa", FontAwesomeIcon);
+
 import router from "./assets/router";
 import store from "./assets/store";
 import App from "./App";

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AllPosts from "../components/AllPosts";
+import AllPosts from "../components/structure/AllPosts";
 import { mapState } from "vuex";
 
 export default {
