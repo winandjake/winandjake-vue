@@ -10,32 +10,46 @@
       {{ block.text }}
     </p>
     <p v-else-if="subtype === 'chat'" class="chat">{{ block.text }}</p>
-    <ol v-else-if="subtype === 'ordered-list-item'">
-      {{
-        block.text
-      }}
-    </ol>
-    <ul v-else-if="subtype === 'unordered-list-item'">
-      {{
-        block.text
-      }}
-    </ul>
+    <li v-else-if="subtype === 'ordered-list-item'" class="ol">
+      {{ block.text }}
+    </li>
+    <li v-else-if="subtype === 'unordered-list-item'" class="ul">
+      {{ block.text }}
+    </li>
     <p v-else>{{ block.text }}</p>
   </div>
   <div v-else-if="type === 'image'">
     <img :src="block.media[0].url" />
   </div>
-  <div v-else-if="type === 'link'">
-    <p>Link type:</p>
-    <pre>{{ block }}</pre>
-  </div>
+  <a v-else-if="type === 'link'" class="link-container" :href="block.url">
+    <h1 v-if="block.site_name || block.title">
+      {{ block.site_name || block.title }} &rarr;
+    </h1>
+    <p v-if="block.description">{{ block.description }}</p>
+  </a>
   <div v-else-if="type === 'audio'">
-    <p>Audio type:</p>
-    <pre>{{ block }}</pre>
+    <div v-if="hasEmbedHtml" v-html="block.embed_html" />
+    <iframe v-else-if="hasEmbedUrl" :src="block.embed_url"></iframe>
+    <audio controls v-else-if="hasMediaObject">
+      <source :src="block.url" :type="block.type" />
+    </audio>
+    <p v-else>{{ block.url }}</p>
   </div>
   <div v-else-if="type === 'video'">
-    <p>Video type:</p>
-    <pre>{{ block }}</pre>
+    <div v-if="hasEmbedHtml" v-html="block.embed_html" />
+    <iframe
+      v-else-if="hasEmbedIFrame"
+      :src="block.embed_iframe.url"
+      :height="block.embed_iframe.height + 'px'"
+    ></iframe>
+    <iframe
+      v-else-if="hasEmbedUrl"
+      :src="block.embed_url"
+      frameBorder="0"
+    ></iframe>
+    <video controls v-else-if="hasMediaObject">
+      <source :src="block.url" :type="block.type" />
+    </video>
   </div>
 </template>
 
@@ -56,28 +70,58 @@ export default {
     },
     subtypeContainer() {
       return this.subtype ? this.subtype + "-container" : "";
+    },
+    hasMediaObject() {
+      return !!this.block.media;
+    },
+    hasEmbedHtml() {
+      return !!this.block.embed_html;
+    },
+    hasEmbedIFrame() {
+      return !!this.block.embed_iframe;
+    },
+    hasEmbedUrl() {
+      return !!this.block.embed_url;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 5px 15px;
+.heading1-container {
+  background: #f7f7f7;
+  border-bottom: 2px solid #dfdfdf;
+  padding: 5px 0 3px 0;
+  margin-bottom: 10px;
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  margin-left: 15px;
 }
 
 p {
-  margin: 0 15px;
-  padding: 10px 0;
+  margin: 15px 15px 0 15px;
 
   &.quirky {
     font-family: "Dancing Script";
     font-size: 32px;
+  }
+
+  &.indented {
+    margin: 0 30px 0 15px;
+    text-align: justify;
+    padding: 0 0 0 10px;
+    border-left: 3px solid #e7e7e7;
+  }
+
+  &.chat {
+    font-family: monospace;
   }
 }
 
@@ -91,7 +135,7 @@ blockquote {
   font-size: 20px;
   width: 100%;
   height: auto;
-  padding: 0 10px 35px 10px;
+  padding: 0 10px 55px 10px;
   quotes: "“" "”";
   line-height: 1.4;
 
@@ -111,7 +155,15 @@ blockquote {
   }
 }
 
-> iframe {
-  width: 100%;
+.link-container {
+  display: block;
+  color: inherit;
+  background: #f7f7f7;
+  padding: 15px;
+  border-bottom: 2px solid #e7e7e7;
+
+  h1 {
+    margin-left: 15px;
+  }
 }
 </style>

@@ -87,9 +87,9 @@ export default {
     display: inline-block;
     margin-right: 15px;
 
-    .reblog_btn {
+    &.reblog_btn {
       position: absolute;
-      bottom: 10.5px;
+      bottom: 9.4px;
     }
   }
 }
