@@ -32,8 +32,8 @@ export default {
   props: {
     blog: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     hasPages() {
@@ -53,8 +53,8 @@ export default {
         this.blog.navigation,
         "ask_label"
       );
-    }
-  }
+    },
+  },
 };
 </script>
 

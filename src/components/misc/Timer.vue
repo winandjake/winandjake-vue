@@ -15,13 +15,13 @@ export default {
   props: {
     nextTrip: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       countdown: undefined,
-      remaining: -1
+      remaining: -1,
     };
   },
   computed: {
@@ -32,7 +32,7 @@ export default {
       const hours = Math.floor((r / (1000 * 60 * 60)) % 24);
       const days = Math.floor(r / (1000 * 60 * 60 * 24));
       return `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds from now`;
-    }
+    },
   },
   methods: {
     destroyCountdown() {
@@ -40,7 +40,7 @@ export default {
         clearInterval(this.countdown);
         this.countdown = undefined;
       }
-    }
+    },
   },
   mounted() {
     this.countdown = setInterval(() => {
@@ -55,7 +55,7 @@ export default {
   },
   beforeDestroy() {
     this.destroyCountdown();
-  }
+  },
 };
 </script>
 

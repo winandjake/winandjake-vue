@@ -5,7 +5,7 @@
       scrolling="no"
       id="submit_form"
       src="https://www.tumblr.com/submit_form/thisisatestbloggerino.tumblr.com"
-      style="background-color:transparent; overflow:hidden;"
+      style="background-color: transparent; overflow: hidden"
       width="100%"
       height="530"
       frameborder="0"
@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: "SubmitAPost"
+  name: "SubmitAPost",
 };
 </script>

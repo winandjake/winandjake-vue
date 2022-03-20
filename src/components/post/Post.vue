@@ -23,13 +23,13 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
+      required: true,
     },
     author: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>
 

@@ -21,8 +21,8 @@ export default {
   name: "AllPosts",
   components: { Post },
   computed: mapState({
-    posts: state => state.blog.posts,
-    author: state => state.blog
-  })
+    posts: (state) => state.blog.posts,
+    author: (state) => state.blog,
+  }),
 };
 </script>

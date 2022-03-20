@@ -7,6 +7,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    blog: window.blog || {} /*dummy*/
-  }
+    blog: window.blog || {} /*dummy*/,
+  },
 });

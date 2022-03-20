@@ -58,8 +58,8 @@ export default {
   name: "PostContentBlock",
   props: {
     block: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   computed: {
     type() {
@@ -82,8 +82,8 @@ export default {
     },
     hasEmbedUrl() {
       return !!this.block.embed_url;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -21,13 +21,13 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       dayFormat: "DD MMMM, YYYY",
-      timeFormat: "hh:mm a"
+      timeFormat: "hh:mm a",
     };
   },
   computed: {
@@ -36,27 +36,23 @@ export default {
     },
     usPostTime() {
       return this.sendTime(
-        moment(this.postTime)
-          .locale("en")
-          .tz("America/Los_Angeles")
+        moment(this.postTime).locale("en").tz("America/Los_Angeles")
       );
     },
     phPostTime() {
       return this.sendTime(
-        moment(this.postTime)
-          .locale("tl-ph")
-          .tz("Asia/Manila")
+        moment(this.postTime).locale("tl-ph").tz("Asia/Manila")
       );
-    }
+    },
   },
   methods: {
     sendTime(time) {
       return {
         day: time.format(this.dayFormat),
-        time: time.format(this.timeFormat)
+        time: time.format(this.timeFormat),
       };
-    }
-  }
+    },
+  },
 };
 </script>
 

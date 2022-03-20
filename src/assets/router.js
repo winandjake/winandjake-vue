@@ -14,30 +14,30 @@ export default new VueRouter({
     {
       path: "/",
       component: {
-        template: "<router-view/>"
+        template: "<router-view/>",
       },
       children: [
         {
           path: "",
           name: "Index",
-          component: Index
+          component: Index,
         },
         {
           path: "ourstory",
           name: "OurStory",
-          component: OurStory
+          component: OurStory,
         },
         {
           path: "ask",
           name: "AskUsAnything",
-          component: AskUsAnything
+          component: AskUsAnything,
         },
         {
           path: "submit",
           name: "SubmitAPost",
-          component: SubmitAPost
-        }
-      ]
-    }
-  ]
+          component: SubmitAPost,
+        },
+      ],
+    },
+  ],
 });

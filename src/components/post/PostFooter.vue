@@ -45,15 +45,15 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       notes: {
         loading: false,
-        content: undefined
-      }
+        content: undefined,
+      },
     };
   },
   computed: {
@@ -62,7 +62,7 @@ export default {
     },
     notesModalId() {
       return `post-${this.post.post_id}-notes-modal`;
-    }
+    },
   },
   methods: {
     async notesModalOpened() {
@@ -76,8 +76,8 @@ export default {
     },
     notesModalClosed() {
       this.notes.content = undefined;
-    }
-  }
+    },
+  },
 };
 </script>
 

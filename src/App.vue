@@ -15,7 +15,7 @@ export default {
   name: "App",
   components: { Header, Intro },
   computed: mapState({
-    blog: state => state.blog
-  })
+    blog: (state) => state.blog,
+  }),
 };
 </script>

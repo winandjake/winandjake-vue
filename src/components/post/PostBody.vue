@@ -31,12 +31,12 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
+      required: true,
     },
     author: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     npf() {
@@ -52,8 +52,8 @@ export default {
     },
     hasOwnContent() {
       return !!this.npf.content.length;
-    }
-  }
+    },
+  },
 };
 </script>
 

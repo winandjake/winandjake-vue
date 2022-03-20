@@ -16,10 +16,10 @@ export default {
   props: {
     blog: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
-  components: { NavBar }
+  components: { NavBar },
 };
 </script>
 

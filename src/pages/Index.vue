@@ -10,7 +10,7 @@ export default {
   name: "Index",
   components: { AllPosts },
   computed: mapState({
-    blog: state => state.blog
-  })
+    blog: (state) => state.blog,
+  }),
 };
 </script>

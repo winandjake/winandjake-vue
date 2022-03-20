@@ -25,18 +25,18 @@ export default {
   props: {
     content: {
       type: Array,
-      required: true
+      required: true,
     },
     blog: {
       type: Object,
-      required: false
-    }
+      required: false,
+    },
   },
   methods: {
     uuid() {
       return uuidv4();
-    }
-  }
+    },
+  },
 };
 </script>
 

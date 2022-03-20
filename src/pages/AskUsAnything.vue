@@ -4,7 +4,7 @@
     <iframe
       scrolling="no"
       src="https://www.tumblr.com/ask_form/thisisatestbloggerino.tumblr.com"
-      style="background-color: transparent; overflow: hidden; height: 190px;"
+      style="background-color: transparent; overflow: hidden; height: 190px"
       id="ask_form"
       width="100%"
       height="190"
@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: "AskUsAnything"
+  name: "AskUsAnything",
 };
 </script>

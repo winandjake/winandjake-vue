@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>Win and Jake</h1>
-    <Timer nextTrip="June 24 2020" />
+    <Timer nextTrip="June 07 2022" />
   </section>
 </template>
 
@@ -10,7 +10,7 @@ import Timer from "../misc/Timer";
 
 export default {
   name: "Intro",
-  components: { Timer }
+  components: { Timer },
 };
 </script>
 
