@@ -1,7 +1,7 @@
 <template>
   <div id="timer">
     <h4>Our Next Meetup Is In</h4>
-    <p v-if="countdown && remaining > 0">{{ remainingStr }}</p>
+    <p v-if="countdown || remaining">{{ remainingStr }}</p>
     <span v-else
       ><b-spinner />
       <p>Loading...</p></span
@@ -21,12 +21,17 @@ export default {
   data() {
     return {
       countdown: undefined,
-      remaining: -1,
+      remaining: undefined,
     };
   },
   computed: {
     remainingStr() {
       const r = this.remaining;
+
+      if (r <= 0) {
+        return "Timer has elapsed";
+      }
+
       const seconds = Math.floor((r / 1000) % 60);
       const minutes = Math.floor((r / 1000 / 60) % 60);
       const hours = Math.floor((r / (1000 * 60 * 60)) % 24);
@@ -45,12 +50,12 @@ export default {
   mounted() {
     this.countdown = setInterval(() => {
       const r = Date.parse(this.nextTrip) - Date.parse(new Date());
+      this.remaining = r;
+
       if (r <= 0) {
         this.destroyCountdown();
         return;
       }
-
-      this.remaining = r;
     });
   },
   beforeDestroy() {
