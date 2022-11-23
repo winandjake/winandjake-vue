@@ -37,6 +37,11 @@ export default new VueRouter({
           name: "SubmitAPost",
           component: SubmitAPost,
         },
+        {
+          path: "page/:page",
+          name: "PageOfPosts",
+          component: Index,
+        },
       ],
     },
   ],
