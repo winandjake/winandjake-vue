@@ -1,7 +1,7 @@
 <template>
   <section>
     <h1>Win and Jake</h1>
-    <Timer nextTrip="December 10 2022" />
+    <Timer nextTrip="June 18 2022" />
   </section>
 </template>
 
